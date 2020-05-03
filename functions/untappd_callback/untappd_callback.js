@@ -1,3 +1,5 @@
+const request = require('request')
+
 // Docs on event and context https://www.netlify.com/docs/functions/#the-handler-method
 exports.handler = async (event, context) => {
   try {
@@ -7,15 +9,20 @@ exports.handler = async (event, context) => {
     const redirect_url = process.env.UNTAPPD_REDIRECT_URL
     const auth_url = `https://untappd.com/oauth/authorize/?client_id=${client_id}&client_secret=${client_secret}&response_type=code&redirect_url=${redirect_url}&code=${code}`
 
+    request(auth_url, function (error, response, body) {
+
+      if (!error && response.statusCode == 200) {
+        console.log(body);
+      } else {
+        console.log(`error: ${error}`)
+      }
+
+    });
+    
+
     return {
       statusCode: 302,
-      // location: auth_url,
-      // body: JSON.stringify({ message: `${auth_url}` })
-      // // more keys you can return:
-      headers: { "Location": auth_url }
-      // isBase64Encoded: true,
-
-      // {"meta":{"http_code":200},"response":{"access_token":"DFC11DF925CA3630423928CDCCBBE6583E2183A2"}}
+      headers: { "Location": 'registered' }
     }
   } catch (err) {
     return { statusCode: 500, body: err.toString() }
