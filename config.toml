@@ -1,4 +1,4 @@
-baseURL = "$URL"
+# baseURL = "$URL"
 languageCode = "en-us"
 title = "BAC Tracker: A side project"
 theme = "hugo-coder"
