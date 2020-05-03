@@ -5,7 +5,7 @@ exports.handler = async (event, context) => {
     const client_id = process.env.UNTAPPD_CLIENT_ID
     const client_secret = process.env.UNTAPPD_CLIENT_SECRET
     const redirect_url = process.env.UNTAPPD_REDIRECT_URL
-    const auth_url = `https://untappd.com/oauth/authorize/?client_id=${client_id}&client_secret==${client_secret}&response_type=code&redirect_url=${redirect_url}&code=CODE`
+    const auth_url = `https://untappd.com/oauth/authorize/?client_id=${client_id}&client_secret==${client_secret}&response_type=code&redirect_url=${redirect_url}&code=${code}`
 
     return {
       statusCode: 200,
