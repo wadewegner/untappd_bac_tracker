@@ -11,13 +11,13 @@ exports.handler = async (event, context) => {
 
     let response_message = "default";
 
-    await request(auth_url, function (error, response, body) {
+    response_message = await request(auth_url, function (error, response, body) {
       if (!error && response.statusCode == 200) {
         console.log(`success: ${body}`);
-        response_message = body;
+        return body
       } else {
         console.log(`error: ${error}`);
-        response_message = error;
+        return error
       }
     });
 
