@@ -14,7 +14,7 @@ exports.handler = async (event, context) => {
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: `${JSON.stringify(response_message)}` }),
+      body: JSON.stringify({ message: `${JSON.parse(response_message)}` }),
     };
   } catch (err) {
     return { statusCode: 500, body: err.toString() };
