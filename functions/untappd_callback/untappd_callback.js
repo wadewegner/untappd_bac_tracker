@@ -1,4 +1,4 @@
-const request = require("request");
+const request = require('async-request')
 
 // Docs on event and context https://www.netlify.com/docs/functions/#the-handler-method
 exports.handler = async (event, context) => {
@@ -11,15 +11,7 @@ exports.handler = async (event, context) => {
 
     let response_message = "default";
 
-    response_message = await request(auth_url, function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        console.log(`success: ${response}`);
-        return response
-      } else {
-        console.log(`error: ${error}`);
-        return error
-      }
-    });
+    response_message = await request(auth_url);
 
     return {
       statusCode: 200,
