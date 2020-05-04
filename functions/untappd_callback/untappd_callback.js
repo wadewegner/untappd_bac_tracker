@@ -9,7 +9,7 @@ exports.handler = async (event, context) => {
     const redirect_url = process.env.UNTAPPD_REDIRECT_URL;
     const auth_url = `https://untappd.com/oauth/authorize/?client_id=${client_id}&client_secret=${client_secret}&response_type=code&redirect_url=${redirect_url}&code=${code}`;
 
-    let response_message = await request(auth_url);
+    let response_message = await request(auth_url).message.body.response.access_token;
 
     return {
       statusCode: 200,
