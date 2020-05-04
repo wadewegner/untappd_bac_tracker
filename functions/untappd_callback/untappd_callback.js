@@ -14,7 +14,7 @@ exports.handler = async (event, context) => {
     request(auth_url, function (error, response, body) {
 
       if (!error && response.statusCode == 200) {
-        console.log(body);
+        console.log(`success: ${body}`);
         response_message = body
 
       } else {
