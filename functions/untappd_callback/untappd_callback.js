@@ -16,14 +16,15 @@ exports.handler = async (event, context) => {
       } else {
         console.log(`error: ${error}`)
       }
+      
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ message: `${body}` })
+    }
 
     });
     
 
-    return {
-      statusCode: 302,
-      headers: { "Location": 'registered' }
-    }
   } catch (err) {
     return { statusCode: 500, body: err.toString() }
   }
