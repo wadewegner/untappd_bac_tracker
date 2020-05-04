@@ -11,11 +11,10 @@ exports.handler = async (event, context) => {
 
     let response_message = await request(auth_url);
 
-    const access_token = response_message.response.access_token
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: `${JSON.stringify(access_token)}` }),
+      body: JSON.stringify({ message: `${JSON.stringify(response_message)}` }),
     };
   } catch (err) {
     return { statusCode: 500, body: err.toString() };
