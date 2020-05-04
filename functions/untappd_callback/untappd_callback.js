@@ -13,8 +13,8 @@ exports.handler = async (event, context) => {
 
     response_message = await request(auth_url, function (error, response, body) {
       if (!error && response.statusCode == 200) {
-        console.log(`success: ${body}`);
-        return body
+        console.log(`success: ${response}`);
+        return response
       } else {
         console.log(`error: ${error}`);
         return error
