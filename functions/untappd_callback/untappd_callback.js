@@ -22,13 +22,14 @@ exports.handler = async (event, context) => {
         response_message = error
       }
       
+        
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ message: `${response_message}` })
+      }
 
     });
     
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ message: `${response_message}` })
-    }
 
   } catch (err) {
     return { statusCode: 500, body: err.toString() }
